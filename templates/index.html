@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Report Checker</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: linear-gradient(to right, #fffbd5, #1a8bd1);
+        }
+        .container1 {
+            margin-top: 20px;
+            padding: 50px;
+            text-align: center;
+        }
+        .container2 {
+            align-items: center;
+            padding: 50px;
+            text-align: center;
+        }
+        /* Add custom style for name in top right corner */
+        .created-by {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: #333;
+            font-family: 'Nasalization', sans-serif; /* Use Nasalization font */
+        }
+        /* Add button-like styling for other text */
+        .button-like {
+            background-color: #1a8bd1;
+            color: white;
+            padding: 10px;
+            border: 1px solid #1a8bd1;
+            border-radius: 5px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container1">
+    <h2>Upload Medical Report</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit" class="button-like">Upload</button>
+    </form>
+</div>
+
+<div class="container2">
+    {% if error %}
+        <p style="color: red;" class="button-like">{{ error }}</p>
+    {% endif %}
+    <div id="output">
+        {% if text %}
+            <h3>Extracted Text:</h3>
+            <p class="button-like">{{ text }}</p>
+        {% endif %}
+    </div>
+    <!-- Display name in top right corner -->
+    <div class="created-by">Created by Ankit Kumar Jha</div>
+</div>
+
+</body>
+</html>
