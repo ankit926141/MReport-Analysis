@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Report Checker</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: linear-gradient(to right, #fffbd5, #1a8bd1);
+        }
+        .container1 {
+            margin-top: 20px;
+            padding: 50px;
+            text-align: center;
+        }
+        .container2, .container3 {
+            align-items: center;
+            padding: 50px;
+            text-align: center;
+            line-height: 1cm;
+        }
+        /* Add custom style for name in top right corner */
+        .created-by {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: #333;
+            font-family: 'Cambria', sans-serif; 
+        }
+        /* Add button-like styling for other text */
+        .button-like {
+            background-color: #1a8bd1;
+            color: white;
+            padding: 10px;
+            border: 1px solid #1a8bd1;
+            border-radius: 10px;
+            margin: 10px;
+            font-family: 'Cambria', sans-serif; 
+        }
+    </style>
+</head>
+<body>
+
+<div class="container1">
+    <h2>Upload Medical Report</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit" class="button-like">Upload</button>
+    </form>
+</div>
+<div class="container2">
+    {% if extracted_text %}
+        <h3>Extracted Text:</h3>
+        <p class="button-like">{{ extracted_text }}</p>
+    {% endif %}
+</div>
+
+<div class="container3">
+    {% if tokens %}
+        <h3>Processed Text:</h3>
+        <p class="button-like">Tokens: {{ tokens }}</p>
+        <p class="button-like">Named Entities: {{ named_entities }}</p>
+        <p class="button-like">Entity Summaries: {{ entity_summaries }}</p>
+    {% endif %}
+</div>
+
+
+<!-- Display name in top right corner -->
+<div class="created-by">Created by Ankit Kumar Jha</div>
+
+</body>
+</html>
