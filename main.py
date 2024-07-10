@@ -9,9 +9,6 @@ import uuid
 
 app = Flask(__name__)
 
-# Download the English models
-stanfordnlp.download('en')
-
 # Initialize the English pipeline with desired processors
 nlp = stanfordnlp.Pipeline(processors='tokenize,pos,lemma', lang='en')
 
